@@ -72,21 +72,20 @@ esp_err_t mmc_spi_init(void)
 esp_err_t mmc_init()
 {
 	mmc_spi_init();
-	// Reset !!!
 	mmc_enableAutomaticSetReset();
 	mmc_enablePeriodicSet();
 	mmc_setPeriodicSetSamples(100);
 	mmc_setFilterBandwidth(mmc_BAND_100);
-	mmc_setContinuousModeFrequency(mmc_FREQ_100HZ);
+	mmc_setContinuousModeFrequency(mmc_FREQ_1000HZ);
 	mmc_enableContinuousMode();
 
-	mmc_d.offsetX =   1741.0f;
-	mmc_d.offsetY =  11276.5f;
-	mmc_d.offsetZ =  -9830.4f;
+	mmc_d.offsetX =   0.0f;
+	mmc_d.offsetY =  0.f;
+	mmc_d.offsetZ =  0.0f;
 
-	mmc_d.gainX = 6839.0f;
-	mmc_d.gainY = 6660.5f;
-	mmc_d.gainZ = 6553.6f;
+	mmc_d.gainX = 0.0f;
+	mmc_d.gainY = 0.0f;
+	mmc_d.gainZ = 0.0f;
 
 	uint8_t ID = 0;
 	mmc_read(PRODID, &ID, 1);
